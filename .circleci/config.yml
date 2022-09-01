@@ -7,7 +7,9 @@ jobs:
       - checkout
       - run:
           name: Build Stage
-          command: npm run lint
+          command: |
+            npm i
+            npm run lint
   test:
     docker:
       - image: circleci/node:13.8.0
@@ -15,7 +17,9 @@ jobs:
       - checkout
       - run:
           name: Test Stage
-          command: npm run test
+          command: |
+            npm i
+            npm run test
   analyse:
     docker:
       - image: circleci/node:13.8.0
@@ -23,7 +27,9 @@ jobs:
       - checkout
       - run:
           name: Analyse Stage
-          command: npm audit
+          command: |
+            npm i
+            npm audit
 
 workflows:
   run_workflow:
